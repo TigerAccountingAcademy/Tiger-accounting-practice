@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TIGER Accounting | Statement Practice</title>
+  <style>
+    :root{--bg:#f6f7fb;--card:#fff;--text:#101827;--muted:#667085;--primary:#0f172a;--accent:#f59e0b;--good:#16a34a;--bad:#dc2626;--warn:#d97706;--line:#dbe3ef;--purple:#7c3aed}
+    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+    header{background:linear-gradient(135deg,#0f172a,#1e293b 55%,#f59e0b);color:white;padding:42px 18px;text-align:center} header h1{margin:0 0 10px;font-size:42px;letter-spacing:-1px} header p{margin:0 auto;opacity:.92;max-width:760px;font-size:17px;line-height:1.5}.brand{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 12px;margin-bottom:14px;font-weight:bold}.cta{margin-top:18px}.cta a{display:inline-block;color:#0f172a;background:#fff;border-radius:999px;padding:10px 14px;text-decoration:none;font-weight:bold;margin:4px}.cta a.secondary-link{background:rgba(255,255,255,.14);color:white;border:1px solid rgba(255,255,255,.25)}
+    main{max-width:1200px;margin:22px auto;padding:0 16px 40px}.grid{display:grid;grid-template-columns:1fr 1.25fr;gap:18px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,.06);padding:18px} h2{margin:0 0 12px;font-size:21px} h3{margin:18px 0 8px;font-size:16px}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 auto 18px}.tab{background:#e2e8f0;color:#0f172a}.tab.active{background:var(--primary);color:white}
+    .pill{display:inline-block;background:#e0ecff;color:#1e40af;border-radius:999px;padding:5px 10px;font-size:13px;font-weight:bold;margin-bottom:12px}.transactions{padding-left:20px;line-height:1.5}.transactions li{margin:6px 0}
+    button{border:0;border-radius:10px;padding:10px 13px;font-weight:bold;cursor:pointer;background:var(--primary);color:white;margin:4px 4px 4px 0}button.secondary{background:#e2e8f0;color:#0f172a}button.good{background:var(--good)}button.warn{background:var(--warn)}
+    input{border:1px solid #cbd5e1;border-radius:10px;padding:9px;width:100%;font-size:14px;background:white}table{width:100%;border-collapse:collapse;margin-top:8px}th,td{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:middle}th{font-size:13px;color:var(--muted);background:#f8fafc}td.amount{width:135px}td.check{width:92px;font-weight:bold;text-align:center}
+    .section-title{background:#eef2ff;font-weight:bold;color:#1e3a8a}.total-row{font-weight:bold;background:#f8fafc}.subtotal-row{font-weight:bold;background:#fbfdff}.equation{font-size:17px;font-weight:bold;padding:12px;border-radius:12px;background:#f8fafc;margin-top:12px;line-height:1.5}
+    .feedback{margin-top:12px;padding:12px;border-radius:12px;display:none}.feedback.good{display:block;background:#dcfce7;color:#14532d}.feedback.bad{display:block;background:#fee2e2;color:#7f1d1d}.feedback.warn{display:block;background:#fef3c7;color:#78350f}.small{font-size:13px;color:var(--muted);line-height:1.45}.score{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}.score span{background:#f1f5f9;border-radius:999px;padding:7px 10px;font-weight:bold}.correct{color:var(--good)}.wrong{color:var(--bad)}.quick-guide{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}.guide{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}.guide b{display:block;margin-bottom:5px}
+    @media(max-width:900px){.grid,.quick-guide{grid-template-columns:1fr}header h1{font-size:24px}}@media print{button,.tabs,.controls{display:none}body{background:white}.card{box-shadow:none}}
+  </style>
+</head>
+<body>
+<header><div class="brand">TIGER Accounting</div><h1>Financial Statement Practice</h1><p>Learn accounting by doing. Practise balance sheets, income statements, and cash flow statements with instant feedback, hints, and worked solutions.</p><div class="cta"><a href="#practice">Start practising</a><a class="secondary-link" href="#about">Why it helps</a></div></header>
+<main>
+  <section class="card" id="about" style="margin-bottom:18px">
+    <h2>Built for beginner accounting students</h2>
+    <p class="small">TIGER Accounting is a practical study tool for students who want to stop memorising and start applying accounting concepts. Choose a statement, read the scenario, enter the numbers, and get instant feedback.</p>
+  </section>
+  <div class="quick-guide">
+    <div class="guide"><b>Balance Sheet</b><span class="small">What the business owns, owes, and the owner/shareholder claim.</span></div>
+    <div class="guide"><b>Income Statement</b><span class="small">Revenue minus expenses = profit or loss.</span></div>
+    <div class="guide"><b>Cash Flow Statement</b><span class="small">Cash movements from operating, investing, and financing activities.</span></div>
+  </div>
+  <div id="practice" class="tabs">
+    <button class="tab active" id="tab-balance" onclick="switchMode('balance')">Balance Sheet Practice</button>
+    <button class="tab" id="tab-income" onclick="switchMode('income')">Income Statement Practice</button>
+    <button class="tab" id="tab-cashflow" onclick="switchMode('cashflow')">Cash Flow Practice</button>
+  </div>
+  <div class="grid">
+    <section class="card">
+      <span class="pill" id="practiceType">Practice scenario</span><h2 id="scenarioTitle"></h2><p class="small" id="scenarioIntro"></p><h3>Information to use</h3><ol class="transactions" id="transactions"></ol>
+      <div class="controls"><button onclick="checkAnswers()">Check answers</button><button class="secondary" onclick="showHint()">Show hint</button><button class="secondary" onclick="showSolution()">Show solution</button><button class="warn" onclick="resetInputs()">Reset</button><button class="good" onclick="nextScenario()">Next scenario</button></div>
+      <div class="score"><span>Scenario: <b id="scenarioNumber"></b></span><span>Best score: <b id="bestScore">0%</b></span></div><div id="hint" class="feedback warn"></div><div id="feedback" class="feedback"></div>
+    </section>
+    <section class="card"><h2 id="statementTitle">Balance Sheet</h2><p class="small" id="statementHelp">Enter positive dollar amounts only. Leave unused rows blank or 0.</p><table><thead><tr><th>Item</th><th>Amount ($)</th><th>Status</th></tr></thead><tbody id="sheetBody"></tbody></table><div class="equation" id="equation"></div></section>
+  </div>
+  <section class="card" style="margin-top:18px">
+    <h2>About TIGER Accounting</h2>
+    <p class="small">A student-built accounting practice platform focused on practical exercises, instant feedback, and job-ready accounting confidence.</p>
+  </section>
+</main>
+<script>
+const statements={
+ balance:{title:'Balance Sheet', help:'Enter positive dollar amounts only. Leave unused rows blank or 0.', equation:'Assets = Liabilities + Equity', bestKey:'bestBalance', lineItems:[
+  {type:'section',label:'Assets'},{key:'cash',label:'Cash'},{key:'accountsReceivable',label:'Accounts Receivable'},{key:'inventory',label:'Inventory'},{key:'equipment',label:'Equipment'},{key:'vehicle',label:'Vehicle'},{type:'total',key:'totalAssets',label:'Total Assets'},
+  {type:'section',label:'Liabilities'},{key:'accountsPayable',label:'Accounts Payable'},{key:'bankLoan',label:'Bank Loan'},{key:'wagesPayable',label:'Wages Payable'},{type:'total',key:'totalLiabilities',label:'Total Liabilities'},
+  {type:'section',label:'Equity'},{key:'ownerCapital',label:'Owner Capital / Share Capital'},{key:'retainedEarnings',label:'Retained Earnings'},{type:'total',key:'totalEquity',label:'Total Equity'},{type:'total',key:'liabEquity',label:'Total Liabilities + Equity'}],
+  calc:a=>{const totalAssets=a.cash+a.accountsReceivable+a.inventory+a.equipment+a.vehicle,totalLiabilities=a.accountsPayable+a.bankLoan+a.wagesPayable,totalEquity=a.ownerCapital+a.retainedEarnings;return{...a,totalAssets,totalLiabilities,totalEquity,liabEquity:totalLiabilities+totalEquity}},
+  summary:()=>`Your equation: $${money(val('totalAssets'))} Assets = $${money(val('liabEquity'))} Liabilities + Equity`,
+  scenarios:[
+   {title:'Small café start-up',intro:'Prepare the café balance sheet at month end.',transactions:['Cash in the bank is $18,000.','Customers owe the café $2,500.','Food and drink inventory is worth $4,000.','Kitchen equipment is worth $25,000.','The café owes suppliers $3,500.','There is a bank loan of $20,000.','The owner invested $26,000.'],answers:{cash:18000,accountsReceivable:2500,inventory:4000,equipment:25000,vehicle:0,accountsPayable:3500,bankLoan:20000,wagesPayable:0,ownerCapital:26000,retainedEarnings:0},hint:'Assets are owned/owed to the business. Liabilities are owed by the business. Equity is the owner claim.'},
+   {title:'Retail clothing store',intro:'A clothing store is listing its closing balances.',transactions:['Cash is $9,750.','Customers owe $1,200.','Inventory on hand is $31,000.','Shop equipment is worth $15,500.','The store owes suppliers $11,450.','Unpaid wages are $2,000.','The bank loan is $18,000.','Share capital is $20,000.','Retained earnings are $6,000.'],answers:{cash:9750,accountsReceivable:1200,inventory:31000,equipment:15500,vehicle:0,accountsPayable:11450,bankLoan:18000,wagesPayable:2000,ownerCapital:20000,retainedEarnings:6000},hint:'Unpaid wages are a liability because the business still owes staff money.'}
+  ]},
+ income:{title:'Income Statement', help:'Classify revenue and expenses, then calculate gross profit and net profit.', equation:'Revenue - Expenses = Net Profit', bestKey:'bestIncome', lineItems:[
+  {type:'section',label:'Revenue'},{key:'salesRevenue',label:'Sales Revenue'},{key:'serviceRevenue',label:'Service Revenue'},{type:'total',key:'totalRevenue',label:'Total Revenue'},
+  {type:'section',label:'Cost of Sales'},{key:'costOfGoodsSold',label:'Cost of Goods Sold'},{type:'subtotal',key:'grossProfit',label:'Gross Profit'},
+  {type:'section',label:'Expenses'},{key:'wagesExpense',label:'Wages Expense'},{key:'rentExpense',label:'Rent Expense'},{key:'utilitiesExpense',label:'Utilities Expense'},{key:'advertisingExpense',label:'Advertising Expense'},{key:'depreciationExpense',label:'Depreciation Expense'},{type:'total',key:'totalExpenses',label:'Total Expenses'},{type:'total',key:'netProfit',label:'Net Profit'}],
+  calc:a=>{const totalRevenue=a.salesRevenue+a.serviceRevenue,grossProfit=totalRevenue-a.costOfGoodsSold,totalExpenses=a.wagesExpense+a.rentExpense+a.utilitiesExpense+a.advertisingExpense+a.depreciationExpense,netProfit=grossProfit-totalExpenses;return{...a,totalRevenue,grossProfit,totalExpenses,netProfit}},
+  summary:()=>`Your result: $${money(val('totalRevenue'))} Revenue - expenses = $${money(val('netProfit'))} Net Profit`,
+  scenarios:[
+   {title:'Café monthly income statement',intro:'Prepare the income statement for the month.',transactions:['Sales revenue was $42,000.','Cost of goods sold was $16,500.','Wages expense was $9,000.','Rent expense was $4,200.','Utilities expense was $900.','Advertising expense was $600.','Depreciation expense was $1,300.'],answers:{salesRevenue:42000,serviceRevenue:0,costOfGoodsSold:16500,wagesExpense:9000,rentExpense:4200,utilitiesExpense:900,advertisingExpense:600,depreciationExpense:1300},hint:'Gross profit = revenue minus cost of goods sold. Net profit = gross profit minus other expenses.'},
+   {title:'Tutoring business income statement',intro:'A service business has no cost of goods sold.',transactions:['Service revenue was $18,400.','Wages expense was $5,200.','Rent expense was $1,600.','Utilities expense was $350.','Advertising expense was $750.','Depreciation expense was $400.'],answers:{salesRevenue:0,serviceRevenue:18400,costOfGoodsSold:0,wagesExpense:5200,rentExpense:1600,utilitiesExpense:350,advertisingExpense:750,depreciationExpense:400},hint:'A service business may have no inventory or cost of goods sold.'}
+  ]},
+ cashflow:{title:'Cash Flow Statement', help:'Enter cash inflows and outflows as positive amounts. Totals calculate net cash movement.', equation:'Opening Cash + Net Cash Flow = Closing Cash', bestKey:'bestCashflow', lineItems:[
+  {type:'section',label:'Operating Activities'},{key:'cashReceivedCustomers',label:'Cash Received from Customers'},{key:'cashPaidSuppliers',label:'Cash Paid to Suppliers'},{key:'cashPaidWages',label:'Cash Paid for Wages'},{key:'cashPaidRent',label:'Cash Paid for Rent'},{type:'total',key:'netOperatingCashFlow',label:'Net Operating Cash Flow'},
+  {type:'section',label:'Investing Activities'},{key:'equipmentPurchased',label:'Cash Paid for Equipment'},{key:'equipmentSold',label:'Cash Received from Sale of Equipment'},{type:'total',key:'netInvestingCashFlow',label:'Net Investing Cash Flow'},
+  {type:'section',label:'Financing Activities'},{key:'ownerContribution',label:'Owner Contribution / Shares Issued'},{key:'loanProceeds',label:'Loan Proceeds'},{key:'loanRepayment',label:'Loan Repayment'},{type:'total',key:'netFinancingCashFlow',label:'Net Financing Cash Flow'},
+  {type:'section',label:'Cash Reconciliation'},{key:'openingCash',label:'Opening Cash'},{type:'total',key:'netCashFlow',label:'Net Increase / Decrease in Cash'},{type:'total',key:'closingCash',label:'Closing Cash'}],
+  calc:a=>{const netOperatingCashFlow=a.cashReceivedCustomers-a.cashPaidSuppliers-a.cashPaidWages-a.cashPaidRent,netInvestingCashFlow=a.equipmentSold-a.equipmentPurchased,netFinancingCashFlow=a.ownerContribution+a.loanProceeds-a.loanRepayment,netCashFlow=netOperatingCashFlow+netInvestingCashFlow+netFinancingCashFlow,closingCash=a.openingCash+netCashFlow;return{...a,netOperatingCashFlow,netInvestingCashFlow,netFinancingCashFlow,netCashFlow,closingCash}},
+  summary:()=>`Your result: Opening cash $${money(val('openingCash'))} + net cash flow $${money(val('netCashFlow'))} = closing cash $${money(val('closingCash'))}`,
+  scenarios:[
+   {title:'Café cash flow statement',intro:'Prepare the cash flow statement for the month.',transactions:['Opening cash was $5,000.','Cash received from customers was $38,000.','Cash paid to suppliers was $14,000.','Cash paid for wages was $8,000.','Cash paid for rent was $4,000.','The café bought equipment for $6,500 cash.','The owner contributed $10,000 cash.','The business repaid $2,000 of a loan.'],answers:{cashReceivedCustomers:38000,cashPaidSuppliers:14000,cashPaidWages:8000,cashPaidRent:4000,equipmentPurchased:6500,equipmentSold:0,ownerContribution:10000,loanProceeds:0,loanRepayment:2000,openingCash:5000},hint:'Operating cash flow is day-to-day trading cash. Equipment purchases are investing. Owner contributions and loans are financing.'},
+   {title:'Lawn mowing cash flow statement',intro:'Prepare the cash flow statement for a small service business.',transactions:['Opening cash was $2,200.','Cash received from customers was $12,500.','Cash paid to suppliers was $2,300.','Cash paid for wages was $3,000.','Cash paid for rent was $0.','The business sold old equipment for $900.','The business bought new equipment for $4,000.','The owner contributed $1,500.','The business received new loan proceeds of $3,000.','The business repaid $800 of a loan.'],answers:{cashReceivedCustomers:12500,cashPaidSuppliers:2300,cashPaidWages:3000,cashPaidRent:0,equipmentPurchased:4000,equipmentSold:900,ownerContribution:1500,loanProceeds:3000,loanRepayment:800,openingCash:2200},hint:'Cash paid for equipment is an investing outflow. Loan proceeds are a financing inflow.'}
+  ]}
+};
+let mode='balance'; let current={balance:0,income:0,cashflow:0};
+function money(n){return Number(n||0).toLocaleString('en-AU')} function val(key){return Number(document.getElementById(key)?.value || 0)}
+function best(){return Number(localStorage.getItem(statements[mode].bestKey)||0)} function setBest(p){localStorage.setItem(statements[mode].bestKey,p)}
+function switchMode(m){mode=m;document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+m).classList.add('active');render()}
+function render(){const st=statements[mode],s=st.scenarios[current[mode]];document.getElementById('practiceType').textContent=st.title+' Practice';document.getElementById('statementTitle').textContent=st.title;document.getElementById('statementHelp').textContent=st.help;document.getElementById('scenarioTitle').textContent=s.title;document.getElementById('scenarioIntro').textContent=s.intro;document.getElementById('scenarioNumber').textContent=`${current[mode]+1} of ${st.scenarios.length}`;document.getElementById('bestScore').textContent=best()+'%';document.getElementById('transactions').innerHTML=s.transactions.map(t=>`<li>${t}</li>`).join('');document.getElementById('hint').style.display='none';document.getElementById('feedback').style.display='none';document.getElementById('equation').textContent=st.equation;const body=document.getElementById('sheetBody');body.innerHTML='';st.lineItems.forEach(item=>{if(item.type==='section')body.innerHTML+=`<tr><td colspan="3" class="section-title">${item.label}</td></tr>`;else body.innerHTML+=`<tr class="${item.type==='total'?'total-row':item.type==='subtotal'?'subtotal-row':''}"><td>${item.label}</td><td class="amount"><input id="${item.key}" type="number" placeholder="0"></td><td class="check" id="check-${item.key}">—</td></tr>`})}
+function checkAnswers(){const st=statements[mode],expected=st.calc(st.scenarios[current[mode]].answers);let correct=0,total=0;st.lineItems.filter(i=>i.key).forEach(i=>{total++;const user=val(i.key),exp=expected[i.key]||0,cell=document.getElementById('check-'+i.key);if(user===exp){correct++;cell.textContent='✓';cell.className='check correct'}else{cell.textContent=`$${money(exp)}`;cell.className='check wrong'}});document.getElementById('equation').textContent=st.summary();const pct=Math.round(correct/total*100);if(pct>best()){setBest(pct);document.getElementById('bestScore').textContent=pct+'%'}const fb=document.getElementById('feedback');fb.className='feedback '+(pct===100?'good':'bad');fb.innerHTML=pct===100?'Perfect — every line is correct.':`Score: <b>${pct}%</b>. Red items show the correct answer. Fix them and check again.`;fb.style.display='block'}
+function showHint(){const h=document.getElementById('hint');h.textContent=statements[mode].scenarios[current[mode]].hint;h.style.display='block'}
+function showSolution(){const st=statements[mode],expected=st.calc(st.scenarios[current[mode]].answers);st.lineItems.filter(i=>i.key).forEach(i=>document.getElementById(i.key).value=expected[i.key]||0);checkAnswers()}
+function resetInputs(){statements[mode].lineItems.filter(i=>i.key).forEach(i=>{document.getElementById(i.key).value='';document.getElementById('check-'+i.key).textContent='—';document.getElementById('check-'+i.key).className='check'});document.getElementById('feedback').style.display='none';document.getElementById('equation').textContent=statements[mode].equation}
+function nextScenario(){current[mode]=(current[mode]+1)%statements[mode].scenarios.length;render()} render();
+</script>
+</body>
+</html>
