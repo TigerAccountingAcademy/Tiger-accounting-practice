@@ -3,96 +3,129 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TIGER Accounting | Statement Practice</title>
+  <title>TIGER Accounting Academy</title>
+  <meta name="description" content="Interactive accounting practice for balance sheets, income statements, cash flow statements, journal entries, ratios and accounting exam preparation." />
   <style>
-    :root{--bg:#f6f7fb;--card:#fff;--text:#101827;--muted:#667085;--primary:#0f172a;--accent:#f59e0b;--good:#16a34a;--bad:#dc2626;--warn:#d97706;--line:#dbe3ef;--purple:#7c3aed}
-    *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
-    header{background:linear-gradient(135deg,#0f172a,#1e293b 55%,#f59e0b);color:white;padding:42px 18px;text-align:center} header h1{margin:0 0 10px;font-size:42px;letter-spacing:-1px} header p{margin:0 auto;opacity:.92;max-width:760px;font-size:17px;line-height:1.5}.brand{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 12px;margin-bottom:14px;font-weight:bold}.cta{margin-top:18px}.cta a{display:inline-block;color:#0f172a;background:#fff;border-radius:999px;padding:10px 14px;text-decoration:none;font-weight:bold;margin:4px}.cta a.secondary-link{background:rgba(255,255,255,.14);color:white;border:1px solid rgba(255,255,255,.25)}
-    main{max-width:1200px;margin:22px auto;padding:0 16px 40px}.grid{display:grid;grid-template-columns:1fr 1.25fr;gap:18px}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,.06);padding:18px} h2{margin:0 0 12px;font-size:21px} h3{margin:18px 0 8px;font-size:16px}
-    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 auto 18px}.tab{background:#e2e8f0;color:#0f172a}.tab.active{background:var(--primary);color:white}
-    .pill{display:inline-block;background:#e0ecff;color:#1e40af;border-radius:999px;padding:5px 10px;font-size:13px;font-weight:bold;margin-bottom:12px}.transactions{padding-left:20px;line-height:1.5}.transactions li{margin:6px 0}
-    button{border:0;border-radius:10px;padding:10px 13px;font-weight:bold;cursor:pointer;background:var(--primary);color:white;margin:4px 4px 4px 0}button.secondary{background:#e2e8f0;color:#0f172a}button.good{background:var(--good)}button.warn{background:var(--warn)}
-    input{border:1px solid #cbd5e1;border-radius:10px;padding:9px;width:100%;font-size:14px;background:white}table{width:100%;border-collapse:collapse;margin-top:8px}th,td{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:middle}th{font-size:13px;color:var(--muted);background:#f8fafc}td.amount{width:135px}td.check{width:92px;font-weight:bold;text-align:center}
-    .section-title{background:#eef2ff;font-weight:bold;color:#1e3a8a}.total-row{font-weight:bold;background:#f8fafc}.subtotal-row{font-weight:bold;background:#fbfdff}.equation{font-size:17px;font-weight:bold;padding:12px;border-radius:12px;background:#f8fafc;margin-top:12px;line-height:1.5}
-    .feedback{margin-top:12px;padding:12px;border-radius:12px;display:none}.feedback.good{display:block;background:#dcfce7;color:#14532d}.feedback.bad{display:block;background:#fee2e2;color:#7f1d1d}.feedback.warn{display:block;background:#fef3c7;color:#78350f}.small{font-size:13px;color:var(--muted);line-height:1.45}.score{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}.score span{background:#f1f5f9;border-radius:999px;padding:7px 10px;font-weight:bold}.correct{color:var(--good)}.wrong{color:var(--bad)}.quick-guide{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}.guide{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}.guide b{display:block;margin-bottom:5px}
-    @media(max-width:900px){.grid,.quick-guide{grid-template-columns:1fr}header h1{font-size:24px}}@media print{button,.tabs,.controls{display:none}body{background:white}.card{box-shadow:none}}
+    :root{
+      --bg:#f6f8fc;--card:#ffffff;--text:#0f172a;--muted:#64748b;--primary:#0f766e;--primary2:#115e59;--accent:#f59e0b;--good:#16a34a;--bad:#dc2626;--warn:#ca8a04;--line:#dbe4ef;--shadow:0 14px 35px rgba(15,23,42,.09);
+    }
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.45} a{color:inherit}
+    header{background:linear-gradient(135deg,#0f766e,#0f172a 70%);color:#fff;padding:36px 18px;text-align:center;position:relative;overflow:hidden}
+    header:before{content:"";position:absolute;inset:-80px;background:radial-gradient(circle at 15% 20%,rgba(245,158,11,.35),transparent 28%),radial-gradient(circle at 85% 10%,rgba(45,212,191,.25),transparent 30%)}
+    header>*{position:relative} .brand{font-size:clamp(30px,6vw,58px);font-weight:900;letter-spacing:-1.5px;margin:0}.tagline{font-size:clamp(15px,2vw,21px);max-width:860px;margin:10px auto 0;color:#dffcf7}.pill{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);padding:7px 12px;border-radius:999px;margin:14px 4px 0;font-weight:700;font-size:13px}
+    nav{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:10px 12px;display:flex;gap:8px;overflow:auto;justify-content:center}.tab{border:1px solid var(--line);background:white;color:var(--text);border-radius:999px;padding:9px 13px;font-weight:800;cursor:pointer;white-space:nowrap}.tab.active{background:var(--primary);color:white;border-color:var(--primary)}
+    main{max-width:1220px;margin:24px auto;padding:0 16px 70px}.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:18px}.metric{font-size:28px;font-weight:900}.muted{color:var(--muted)} h2{margin:0 0 10px;font-size:26px} h3{margin:16px 0 8px}.section{display:none}.section.active{display:block}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}.btn{border:0;border-radius:12px;background:var(--primary);color:white;padding:11px 14px;font-weight:900;cursor:pointer}.btn:hover{background:var(--primary2)}.btn.secondary{background:#e2e8f0;color:#0f172a}.btn.warn{background:var(--accent);color:#111827}.btn.danger{background:var(--bad)}select,input{border:1px solid var(--line);border-radius:12px;padding:10px;font-size:15px;background:white}input{width:100%} table{width:100%;border-collapse:collapse;margin-top:10px;background:white;border-radius:12px;overflow:hidden}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left}th{background:#ecfdf5;color:#064e3b}.total-row td{font-weight:900;background:#f8fafc}.feedback{padding:12px;border-radius:12px;margin-top:12px;font-weight:800}.good{background:#dcfce7;color:#166534}.bad{background:#fee2e2;color:#991b1b}.warnbox{background:#fef3c7;color:#92400e}.question{font-size:18px;font-weight:800;margin:8px 0 12px}.small{font-size:13px}.kbd{background:#f1f5f9;border:1px solid #cbd5e1;border-radius:8px;padding:2px 7px;font-family:monospace}.progress-bar{height:12px;background:#e2e8f0;border-radius:99px;overflow:hidden}.progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));width:0%}.choices{display:grid;gap:9px}.choice{padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;font-weight:700}.choice:hover{border-color:var(--primary)}.choice.selected{background:#ccfbf1;border-color:var(--primary)}.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.footer{text-align:center;color:var(--muted);margin-top:30px}.badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:7px 10px;background:#f1f5f9;color:#334155;font-weight:800;margin:3px}.mobile-note{display:none}
+    @media(max-width:900px){.grid,.cards,.mini-grid{grid-template-columns:1fr}.brand{font-size:36px}nav{justify-content:flex-start}.card{padding:14px}.mobile-note{display:block}.hide-mobile{display:none}}
   </style>
 </head>
 <body>
-<header><div class="brand">TIGER Accounting</div><h1>Financial Statement Practice</h1><p>Learn accounting by doing. Practise balance sheets, income statements, and cash flow statements with instant feedback, hints, and worked solutions.</p><div class="cta"><a href="#practice">Start practising</a><a class="secondary-link" href="#about">Why it helps</a></div></header>
+<header>
+  <h1 class="brand">TIGER Accounting Academy</h1>
+  <p class="tagline">Learn accounting by doing. Practise financial statements, journal entries, ratio analysis and exam-style questions with instant feedback.</p>
+  <div><span class="pill">Balance Sheets</span><span class="pill">Income Statements</span><span class="pill">Cash Flows</span><span class="pill">Journal Entries</span><span class="pill">Exam Mode</span></div>
+  <div class="hero-actions"><button class="btn warn" onclick="startExam()">Start 20 Question Exam</button><button class="btn secondary" onclick="showSection('dashboard')">View Progress</button></div>
+</header>
+<nav>
+  <button class="tab active" onclick="showSection('dashboard')">Dashboard</button>
+  <button class="tab" onclick="showSection('statements')">3 Statements</button>
+  <button class="tab" onclick="showSection('journals')">Journal Entries</button>
+  <button class="tab" onclick="showSection('ratios')">Ratio Analysis</button>
+  <button class="tab" onclick="showSection('exam')">Exam Mode</button>
+  <button class="tab" onclick="showSection('advanced')">ACCT3002</button>
+  <button class="tab" onclick="showSection('about')">About</button>
+</nav>
 <main>
-  <section class="card" id="about" style="margin-bottom:18px">
-    <h2>Built for beginner accounting students</h2>
-    <p class="small">TIGER Accounting is a practical study tool for students who want to stop memorising and start applying accounting concepts. Choose a statement, read the scenario, enter the numbers, and get instant feedback.</p>
+  <section id="dashboard" class="section active">
+    <div class="cards">
+      <div class="card"><div class="muted">Questions Attempted</div><div id="mAttempted" class="metric">0</div></div>
+      <div class="card"><div class="muted">Correct</div><div id="mCorrect" class="metric">0</div></div>
+      <div class="card"><div class="muted">Accuracy</div><div id="mAccuracy" class="metric">0%</div></div>
+      <div class="card"><div class="muted">Study Streak</div><div id="mStreak" class="metric">0</div></div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <h2>Your Practice Hub</h2>
+        <p>This website is built for beginner accounting students who want practical, interactive repetition instead of just reading notes.</p>
+        <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+        <p class="muted small">Progress saves in this browser using local storage.</p>
+        <h3>Recommended path</h3>
+        <p><span class="badge">1. Accounting equation</span><span class="badge">2. Balance sheet</span><span class="badge">3. Income statement</span><span class="badge">4. Cash flow</span><span class="badge">5. Journals</span><span class="badge">6. Ratios</span></p>
+      </div>
+      <div class="card">
+        <h2>Quick Launch</h2>
+        <p><button class="btn" onclick="showSection('statements');newStatementQuestion()">Random 3-statement question</button></p>
+        <p><button class="btn" onclick="showSection('journals');newJournalQuestion()">Random journal entry</button></p>
+        <p><button class="btn" onclick="showSection('ratios');newRatioQuestion()">Random ratio question</button></p>
+        <p><button class="btn danger" onclick="resetProgress()">Reset progress</button></p>
+      </div>
+    </div>
   </section>
-  <div class="quick-guide">
-    <div class="guide"><b>Balance Sheet</b><span class="small">What the business owns, owes, and the owner/shareholder claim.</span></div>
-    <div class="guide"><b>Income Statement</b><span class="small">Revenue minus expenses = profit or loss.</span></div>
-    <div class="guide"><b>Cash Flow Statement</b><span class="small">Cash movements from operating, investing, and financing activities.</span></div>
-  </div>
-  <div id="practice" class="tabs">
-    <button class="tab active" id="tab-balance" onclick="switchMode('balance')">Balance Sheet Practice</button>
-    <button class="tab" id="tab-income" onclick="switchMode('income')">Income Statement Practice</button>
-    <button class="tab" id="tab-cashflow" onclick="switchMode('cashflow')">Cash Flow Practice</button>
-  </div>
-  <div class="grid">
-    <section class="card">
-      <span class="pill" id="practiceType">Practice scenario</span><h2 id="scenarioTitle"></h2><p class="small" id="scenarioIntro"></p><h3>Information to use</h3><ol class="transactions" id="transactions"></ol>
-      <div class="controls"><button onclick="checkAnswers()">Check answers</button><button class="secondary" onclick="showHint()">Show hint</button><button class="secondary" onclick="showSolution()">Show solution</button><button class="warn" onclick="resetInputs()">Reset</button><button class="good" onclick="nextScenario()">Next scenario</button></div>
-      <div class="score"><span>Scenario: <b id="scenarioNumber"></b></span><span>Best score: <b id="bestScore">0%</b></span></div><div id="hint" class="feedback warn"></div><div id="feedback" class="feedback"></div>
-    </section>
-    <section class="card"><h2 id="statementTitle">Balance Sheet</h2><p class="small" id="statementHelp">Enter positive dollar amounts only. Leave unused rows blank or 0.</p><table><thead><tr><th>Item</th><th>Amount ($)</th><th>Status</th></tr></thead><tbody id="sheetBody"></tbody></table><div class="equation" id="equation"></div></section>
-  </div>
-  <section class="card" style="margin-top:18px">
-    <h2>About TIGER Accounting</h2>
-    <p class="small">A student-built accounting practice platform focused on practical exercises, instant feedback, and job-ready accounting confidence.</p>
+
+  <section id="statements" class="section">
+    <div class="grid">
+      <div class="card">
+        <h2>3 Statement Practice</h2>
+        <label>Choose module</label>
+        <select id="statementType" onchange="newStatementQuestion()"><option value="balance">Balance Sheet</option><option value="income">Income Statement</option><option value="cashflow">Cash Flow Statement</option><option value="equation">Accounting Equation</option></select>
+        <div id="statementQuestion"></div>
+        <button class="btn" onclick="checkStatement()">Check answer</button>
+        <button class="btn secondary" onclick="newStatementQuestion()">New question</button>
+        <div id="statementFeedback"></div>
+      </div>
+      <div class="card">
+        <h2>Mini Guide</h2>
+        <p><b>Balance Sheet:</b> Assets = Liabilities + Equity.</p>
+        <p><b>Income Statement:</b> Profit = Revenue − Expenses.</p>
+        <p><b>Cash Flow:</b> Closing cash = Opening cash + operating + investing + financing cash flows.</p>
+        <p><b>Accounting Equation:</b> Every transaction keeps the equation balanced.</p>
+      </div>
+    </div>
   </section>
+
+  <section id="journals" class="section">
+    <div class="grid">
+      <div class="card"><h2>Journal Entry Trainer</h2><div id="journalQuestion" class="question"></div><div class="mini-grid"><div><label>Debit account</label><input id="debitAccount" placeholder="e.g. Cash"></div><div><label>Credit account</label><input id="creditAccount" placeholder="e.g. Sales Revenue"></div><div><label>Debit amount</label><input id="debitAmount" type="number"></div><div><label>Credit amount</label><input id="creditAmount" type="number"></div></div><br><button class="btn" onclick="checkJournal()">Check journal</button> <button class="btn secondary" onclick="newJournalQuestion()">New journal</button><div id="journalFeedback"></div></div>
+      <div class="card"><h2>Debit/Credit Cheat Sheet</h2><table><tr><th>Account</th><th>Increase</th><th>Decrease</th></tr><tr><td>Assets</td><td>Debit</td><td>Credit</td></tr><tr><td>Expenses</td><td>Debit</td><td>Credit</td></tr><tr><td>Liabilities</td><td>Credit</td><td>Debit</td></tr><tr><td>Equity</td><td>Credit</td><td>Debit</td></tr><tr><td>Revenue</td><td>Credit</td><td>Debit</td></tr></table></div>
+    </div>
+  </section>
+
+  <section id="ratios" class="section">
+    <div class="grid"><div class="card"><h2>Ratio Analysis Practice</h2><div id="ratioQuestion" class="question"></div><input id="ratioAnswer" type="number" step="0.01" placeholder="Enter answer rounded to 2 decimals"><br><br><button class="btn" onclick="checkRatio()">Check ratio</button> <button class="btn secondary" onclick="newRatioQuestion()">New ratio</button><div id="ratioFeedback"></div></div><div class="card"><h2>Useful Ratios</h2><p><b>Current ratio</b> = Current assets / Current liabilities</p><p><b>Debt to equity</b> = Total liabilities / Equity</p><p><b>Gross profit margin</b> = Gross profit / Sales</p><p><b>Net profit margin</b> = Net profit / Sales</p><p><b>ROA</b> = Net profit / Total assets</p></div></div>
+  </section>
+
+  <section id="exam" class="section">
+    <div class="card"><h2>Exam Mode</h2><p>20 mixed accounting questions. Your score updates at the end.</p><button class="btn warn" onclick="startExam()">Start / Restart Exam</button><div id="examBox"></div></div>
+  </section>
+
+  <section id="advanced" class="section">
+    <div class="grid"><div class="card"><h2>ACCT3002 Style Practice</h2><p>This section gives short advanced prompts for consolidation, equity accounting and financial instruments.</p><div id="advancedQuestion" class="question"></div><div class="choices" id="advancedChoices"></div><button class="btn secondary" onclick="newAdvancedQuestion()">New advanced question</button><div id="advancedFeedback"></div></div><div class="card"><h2>Topics included</h2><p><span class="badge">Consolidations</span><span class="badge">BCVR</span><span class="badge">NCI</span><span class="badge">Equity investments</span><span class="badge">Financial instruments</span><span class="badge">Foreign currency</span></p><p class="muted">This is a starter module. Add more question banks over time to make the platform stronger.</p></div></div>
+  </section>
+
+  <section id="about" class="section"><div class="card"><h2>About TIGER Accounting Academy</h2><p>TIGER Accounting Academy is an interactive accounting practice project built to help students become more confident with financial statements and core accounting skills.</p><p><b>LinkedIn description:</b> Built an interactive accounting learning platform featuring balance sheet, income statement, cash flow statement, journal entry, ratio analysis and exam-style practice with instant feedback and browser-based progress tracking.</p><p class="muted">Future business upgrades: student login, university question banks, analytics dashboard, paid premium courses, recruiter-ready accounting aptitude tests.</p></div></section>
+  <div class="footer">© TIGER Accounting Academy · Built for practical accounting learning</div>
 </main>
 <script>
-const statements={
- balance:{title:'Balance Sheet', help:'Enter positive dollar amounts only. Leave unused rows blank or 0.', equation:'Assets = Liabilities + Equity', bestKey:'bestBalance', lineItems:[
-  {type:'section',label:'Assets'},{key:'cash',label:'Cash'},{key:'accountsReceivable',label:'Accounts Receivable'},{key:'inventory',label:'Inventory'},{key:'equipment',label:'Equipment'},{key:'vehicle',label:'Vehicle'},{type:'total',key:'totalAssets',label:'Total Assets'},
-  {type:'section',label:'Liabilities'},{key:'accountsPayable',label:'Accounts Payable'},{key:'bankLoan',label:'Bank Loan'},{key:'wagesPayable',label:'Wages Payable'},{type:'total',key:'totalLiabilities',label:'Total Liabilities'},
-  {type:'section',label:'Equity'},{key:'ownerCapital',label:'Owner Capital / Share Capital'},{key:'retainedEarnings',label:'Retained Earnings'},{type:'total',key:'totalEquity',label:'Total Equity'},{type:'total',key:'liabEquity',label:'Total Liabilities + Equity'}],
-  calc:a=>{const totalAssets=a.cash+a.accountsReceivable+a.inventory+a.equipment+a.vehicle,totalLiabilities=a.accountsPayable+a.bankLoan+a.wagesPayable,totalEquity=a.ownerCapital+a.retainedEarnings;return{...a,totalAssets,totalLiabilities,totalEquity,liabEquity:totalLiabilities+totalEquity}},
-  summary:()=>`Your equation: $${money(val('totalAssets'))} Assets = $${money(val('liabEquity'))} Liabilities + Equity`,
-  scenarios:[
-   {title:'Small café start-up',intro:'Prepare the café balance sheet at month end.',transactions:['Cash in the bank is $18,000.','Customers owe the café $2,500.','Food and drink inventory is worth $4,000.','Kitchen equipment is worth $25,000.','The café owes suppliers $3,500.','There is a bank loan of $20,000.','The owner invested $26,000.'],answers:{cash:18000,accountsReceivable:2500,inventory:4000,equipment:25000,vehicle:0,accountsPayable:3500,bankLoan:20000,wagesPayable:0,ownerCapital:26000,retainedEarnings:0},hint:'Assets are owned/owed to the business. Liabilities are owed by the business. Equity is the owner claim.'},
-   {title:'Retail clothing store',intro:'A clothing store is listing its closing balances.',transactions:['Cash is $9,750.','Customers owe $1,200.','Inventory on hand is $31,000.','Shop equipment is worth $15,500.','The store owes suppliers $11,450.','Unpaid wages are $2,000.','The bank loan is $18,000.','Share capital is $20,000.','Retained earnings are $6,000.'],answers:{cash:9750,accountsReceivable:1200,inventory:31000,equipment:15500,vehicle:0,accountsPayable:11450,bankLoan:18000,wagesPayable:2000,ownerCapital:20000,retainedEarnings:6000},hint:'Unpaid wages are a liability because the business still owes staff money.'}
-  ]},
- income:{title:'Income Statement', help:'Classify revenue and expenses, then calculate gross profit and net profit.', equation:'Revenue - Expenses = Net Profit', bestKey:'bestIncome', lineItems:[
-  {type:'section',label:'Revenue'},{key:'salesRevenue',label:'Sales Revenue'},{key:'serviceRevenue',label:'Service Revenue'},{type:'total',key:'totalRevenue',label:'Total Revenue'},
-  {type:'section',label:'Cost of Sales'},{key:'costOfGoodsSold',label:'Cost of Goods Sold'},{type:'subtotal',key:'grossProfit',label:'Gross Profit'},
-  {type:'section',label:'Expenses'},{key:'wagesExpense',label:'Wages Expense'},{key:'rentExpense',label:'Rent Expense'},{key:'utilitiesExpense',label:'Utilities Expense'},{key:'advertisingExpense',label:'Advertising Expense'},{key:'depreciationExpense',label:'Depreciation Expense'},{type:'total',key:'totalExpenses',label:'Total Expenses'},{type:'total',key:'netProfit',label:'Net Profit'}],
-  calc:a=>{const totalRevenue=a.salesRevenue+a.serviceRevenue,grossProfit=totalRevenue-a.costOfGoodsSold,totalExpenses=a.wagesExpense+a.rentExpense+a.utilitiesExpense+a.advertisingExpense+a.depreciationExpense,netProfit=grossProfit-totalExpenses;return{...a,totalRevenue,grossProfit,totalExpenses,netProfit}},
-  summary:()=>`Your result: $${money(val('totalRevenue'))} Revenue - expenses = $${money(val('netProfit'))} Net Profit`,
-  scenarios:[
-   {title:'Café monthly income statement',intro:'Prepare the income statement for the month.',transactions:['Sales revenue was $42,000.','Cost of goods sold was $16,500.','Wages expense was $9,000.','Rent expense was $4,200.','Utilities expense was $900.','Advertising expense was $600.','Depreciation expense was $1,300.'],answers:{salesRevenue:42000,serviceRevenue:0,costOfGoodsSold:16500,wagesExpense:9000,rentExpense:4200,utilitiesExpense:900,advertisingExpense:600,depreciationExpense:1300},hint:'Gross profit = revenue minus cost of goods sold. Net profit = gross profit minus other expenses.'},
-   {title:'Tutoring business income statement',intro:'A service business has no cost of goods sold.',transactions:['Service revenue was $18,400.','Wages expense was $5,200.','Rent expense was $1,600.','Utilities expense was $350.','Advertising expense was $750.','Depreciation expense was $400.'],answers:{salesRevenue:0,serviceRevenue:18400,costOfGoodsSold:0,wagesExpense:5200,rentExpense:1600,utilitiesExpense:350,advertisingExpense:750,depreciationExpense:400},hint:'A service business may have no inventory or cost of goods sold.'}
-  ]},
- cashflow:{title:'Cash Flow Statement', help:'Enter cash inflows and outflows as positive amounts. Totals calculate net cash movement.', equation:'Opening Cash + Net Cash Flow = Closing Cash', bestKey:'bestCashflow', lineItems:[
-  {type:'section',label:'Operating Activities'},{key:'cashReceivedCustomers',label:'Cash Received from Customers'},{key:'cashPaidSuppliers',label:'Cash Paid to Suppliers'},{key:'cashPaidWages',label:'Cash Paid for Wages'},{key:'cashPaidRent',label:'Cash Paid for Rent'},{type:'total',key:'netOperatingCashFlow',label:'Net Operating Cash Flow'},
-  {type:'section',label:'Investing Activities'},{key:'equipmentPurchased',label:'Cash Paid for Equipment'},{key:'equipmentSold',label:'Cash Received from Sale of Equipment'},{type:'total',key:'netInvestingCashFlow',label:'Net Investing Cash Flow'},
-  {type:'section',label:'Financing Activities'},{key:'ownerContribution',label:'Owner Contribution / Shares Issued'},{key:'loanProceeds',label:'Loan Proceeds'},{key:'loanRepayment',label:'Loan Repayment'},{type:'total',key:'netFinancingCashFlow',label:'Net Financing Cash Flow'},
-  {type:'section',label:'Cash Reconciliation'},{key:'openingCash',label:'Opening Cash'},{type:'total',key:'netCashFlow',label:'Net Increase / Decrease in Cash'},{type:'total',key:'closingCash',label:'Closing Cash'}],
-  calc:a=>{const netOperatingCashFlow=a.cashReceivedCustomers-a.cashPaidSuppliers-a.cashPaidWages-a.cashPaidRent,netInvestingCashFlow=a.equipmentSold-a.equipmentPurchased,netFinancingCashFlow=a.ownerContribution+a.loanProceeds-a.loanRepayment,netCashFlow=netOperatingCashFlow+netInvestingCashFlow+netFinancingCashFlow,closingCash=a.openingCash+netCashFlow;return{...a,netOperatingCashFlow,netInvestingCashFlow,netFinancingCashFlow,netCashFlow,closingCash}},
-  summary:()=>`Your result: Opening cash $${money(val('openingCash'))} + net cash flow $${money(val('netCashFlow'))} = closing cash $${money(val('closingCash'))}`,
-  scenarios:[
-   {title:'Café cash flow statement',intro:'Prepare the cash flow statement for the month.',transactions:['Opening cash was $5,000.','Cash received from customers was $38,000.','Cash paid to suppliers was $14,000.','Cash paid for wages was $8,000.','Cash paid for rent was $4,000.','The café bought equipment for $6,500 cash.','The owner contributed $10,000 cash.','The business repaid $2,000 of a loan.'],answers:{cashReceivedCustomers:38000,cashPaidSuppliers:14000,cashPaidWages:8000,cashPaidRent:4000,equipmentPurchased:6500,equipmentSold:0,ownerContribution:10000,loanProceeds:0,loanRepayment:2000,openingCash:5000},hint:'Operating cash flow is day-to-day trading cash. Equipment purchases are investing. Owner contributions and loans are financing.'},
-   {title:'Lawn mowing cash flow statement',intro:'Prepare the cash flow statement for a small service business.',transactions:['Opening cash was $2,200.','Cash received from customers was $12,500.','Cash paid to suppliers was $2,300.','Cash paid for wages was $3,000.','Cash paid for rent was $0.','The business sold old equipment for $900.','The business bought new equipment for $4,000.','The owner contributed $1,500.','The business received new loan proceeds of $3,000.','The business repaid $800 of a loan.'],answers:{cashReceivedCustomers:12500,cashPaidSuppliers:2300,cashPaidWages:3000,cashPaidRent:0,equipmentPurchased:4000,equipmentSold:900,ownerContribution:1500,loanProceeds:3000,loanRepayment:800,openingCash:2200},hint:'Cash paid for equipment is an investing outflow. Loan proceeds are a financing inflow.'}
-  ]}
-};
-let mode='balance'; let current={balance:0,income:0,cashflow:0};
-function money(n){return Number(n||0).toLocaleString('en-AU')} function val(key){return Number(document.getElementById(key)?.value || 0)}
-function best(){return Number(localStorage.getItem(statements[mode].bestKey)||0)} function setBest(p){localStorage.setItem(statements[mode].bestKey,p)}
-function switchMode(m){mode=m;document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+m).classList.add('active');render()}
-function render(){const st=statements[mode],s=st.scenarios[current[mode]];document.getElementById('practiceType').textContent=st.title+' Practice';document.getElementById('statementTitle').textContent=st.title;document.getElementById('statementHelp').textContent=st.help;document.getElementById('scenarioTitle').textContent=s.title;document.getElementById('scenarioIntro').textContent=s.intro;document.getElementById('scenarioNumber').textContent=`${current[mode]+1} of ${st.scenarios.length}`;document.getElementById('bestScore').textContent=best()+'%';document.getElementById('transactions').innerHTML=s.transactions.map(t=>`<li>${t}</li>`).join('');document.getElementById('hint').style.display='none';document.getElementById('feedback').style.display='none';document.getElementById('equation').textContent=st.equation;const body=document.getElementById('sheetBody');body.innerHTML='';st.lineItems.forEach(item=>{if(item.type==='section')body.innerHTML+=`<tr><td colspan="3" class="section-title">${item.label}</td></tr>`;else body.innerHTML+=`<tr class="${item.type==='total'?'total-row':item.type==='subtotal'?'subtotal-row':''}"><td>${item.label}</td><td class="amount"><input id="${item.key}" type="number" placeholder="0"></td><td class="check" id="check-${item.key}">—</td></tr>`})}
-function checkAnswers(){const st=statements[mode],expected=st.calc(st.scenarios[current[mode]].answers);let correct=0,total=0;st.lineItems.filter(i=>i.key).forEach(i=>{total++;const user=val(i.key),exp=expected[i.key]||0,cell=document.getElementById('check-'+i.key);if(user===exp){correct++;cell.textContent='✓';cell.className='check correct'}else{cell.textContent=`$${money(exp)}`;cell.className='check wrong'}});document.getElementById('equation').textContent=st.summary();const pct=Math.round(correct/total*100);if(pct>best()){setBest(pct);document.getElementById('bestScore').textContent=pct+'%'}const fb=document.getElementById('feedback');fb.className='feedback '+(pct===100?'good':'bad');fb.innerHTML=pct===100?'Perfect — every line is correct.':`Score: <b>${pct}%</b>. Red items show the correct answer. Fix them and check again.`;fb.style.display='block'}
-function showHint(){const h=document.getElementById('hint');h.textContent=statements[mode].scenarios[current[mode]].hint;h.style.display='block'}
-function showSolution(){const st=statements[mode],expected=st.calc(st.scenarios[current[mode]].answers);st.lineItems.filter(i=>i.key).forEach(i=>document.getElementById(i.key).value=expected[i.key]||0);checkAnswers()}
-function resetInputs(){statements[mode].lineItems.filter(i=>i.key).forEach(i=>{document.getElementById(i.key).value='';document.getElementById('check-'+i.key).textContent='—';document.getElementById('check-'+i.key).className='check'});document.getElementById('feedback').style.display='none';document.getElementById('equation').textContent=statements[mode].equation}
-function nextScenario(){current[mode]=(current[mode]+1)%statements[mode].scenarios.length;render()} render();
+const $=id=>document.getElementById(id);let state=JSON.parse(localStorage.getItem('tigerAcctState')||'{"attempted":0,"correct":0,"streak":0}');let currentStatement={},currentJournal={},currentRatio={},currentAdvanced={},exam=[];
+function save(){localStorage.setItem('tigerAcctState',JSON.stringify(state));updateMetrics()}function score(ok){state.attempted++;if(ok){state.correct++;state.streak++}else state.streak=0;save()}function updateMetrics(){let acc=state.attempted?Math.round(state.correct/state.attempted*100):0;$('mAttempted').textContent=state.attempted;$('mCorrect').textContent=state.correct;$('mAccuracy').textContent=acc+'%';$('mStreak').textContent=state.streak;$('progressFill').style.width=Math.min(100,state.correct)+'%'}function resetProgress(){if(confirm('Reset all saved progress?')){state={attempted:0,correct:0,streak:0};save()}}
+function showSection(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));[...document.querySelectorAll('.tab')].find(t=>t.textContent.toLowerCase().includes(id==='statements'?'3':id==='journals'?'journal':id==='ratios'?'ratio':id==='advanced'?'acct':id))?.classList.add('active')}
+function rand(a,b){return Math.floor(Math.random()*(b-a+1))+a}function money(n){return '$'+Number(n).toLocaleString()}
+function newStatementQuestion(){let type=$('statementType').value, html='';$('statementFeedback').innerHTML=''; if(type==='balance'){let cash=rand(5,30)*1000,ar=rand(8,40)*1000,inv=rand(5,35)*1000,equip=rand(40,120)*1000,ap=rand(5,30)*1000,loan=rand(20,90)*1000;let assets=cash+ar+inv+equip,liab=ap+loan,equity=assets-liab;currentStatement={type,answers:{cash,ar,inv,equip,ap,loan,equity,assets,liab}};html=`<p class='question'>Complete the balance sheet.</p>${statementTable(['Cash','Accounts Receivable','Inventory','Equipment','Accounts Payable','Bank Loan','Owner Equity'],['cash','ar','inv','equip','ap','loan','equity'])}`}
+ if(type==='income'){let sales=rand(80,220)*1000,cogs=rand(30,90)*1000,wages=rand(10,45)*1000,rent=rand(5,25)*1000,dep=rand(3,15)*1000;let gross=sales-cogs,expenses=wages+rent+dep,profit=gross-expenses;currentStatement={type,answers:{sales,cogs,wages,rent,dep,gross,expenses,profit}};html=`<p class='question'>Complete the income statement.</p>${statementTable(['Sales Revenue','Cost of Goods Sold','Gross Profit','Wages Expense','Rent Expense','Depreciation Expense','Net Profit'],['sales','cogs','gross','wages','rent','dep','profit'])}`}
+ if(type==='cashflow'){let opening=rand(10,40)*1000,op=rand(10,60)*1000,inv=-rand(5,45)*1000,fin=rand(-20,40)*1000,closing=opening+op+inv+fin;currentStatement={type,answers:{opening,op,inv,fin,closing}};html=`<p class='question'>Complete the cash flow statement.</p>${statementTable(['Opening Cash','Operating Cash Flow','Investing Cash Flow','Financing Cash Flow','Closing Cash'],['opening','op','inv','fin','closing'])}`}
+ if(type==='equation'){let liab=rand(20,90)*1000,equity=rand(30,120)*1000,assets=liab+equity;currentStatement={type,answers:{assets,liab,equity}};html=`<p class='question'>Use Assets = Liabilities + Equity.</p>${statementTable(['Assets','Liabilities','Equity'],['assets','liab','equity'])}`}
+ $('statementQuestion').innerHTML=html; revealSome(currentStatement.answers)}
+function statementTable(labels,keys){return `<table><tr><th>Item</th><th>Amount</th></tr>${labels.map((l,i)=>`<tr><td>${l}</td><td><input data-key='${keys[i]}' type='number'></td></tr>`).join('')}</table>`}
+function revealSome(ans){let inputs=[...document.querySelectorAll('#statementQuestion input')];inputs.forEach(inp=>{if(Math.random()<.55){inp.value=ans[inp.dataset.key];inp.disabled=true}});if(inputs.every(i=>i.disabled))inputs[0].disabled=false,inputs[0].value=''}
+function checkStatement(){let ok=true, wrong=[];document.querySelectorAll('#statementQuestion input').forEach(i=>{let exp=currentStatement.answers[i.dataset.key];if(Number(i.value)!==exp){ok=false;wrong.push(`${i.dataset.key}: ${money(exp)}`)}});score(ok);$('statementFeedback').innerHTML=ok?`<div class='feedback good'>Correct. Nice work.</div>`:`<div class='feedback bad'>Not quite. Correct answers: ${wrong.join(', ')}</div>`}
+const journals=[['Business receives $5,000 cash from owner contribution.','Cash','Owner Capital',5000],['Business buys equipment for $12,000 cash.','Equipment','Cash',12000],['Business makes $7,500 sales on credit.','Accounts Receivable','Sales Revenue',7500],['Business pays $1,200 rent in cash.','Rent Expense','Cash',1200],['Business borrows $20,000 from the bank.','Cash','Bank Loan',20000],['Business pays supplier $3,300 cash.','Accounts Payable','Cash',3300],['Business records $900 depreciation.','Depreciation Expense','Accumulated Depreciation',900]];
+function norm(s){return String(s).toLowerCase().replace(/[^a-z]/g,'')}function newJournalQuestion(){let j=journals[rand(0,journals.length-1)];currentJournal={q:j[0],debit:j[1],credit:j[2],amt:j[3]};$('journalQuestion').textContent=j[0];['debitAccount','creditAccount','debitAmount','creditAmount'].forEach(id=>$(id).value='');$('journalFeedback').innerHTML=''}
+function checkJournal(){let ok=norm($('debitAccount').value).includes(norm(currentJournal.debit))&&norm($('creditAccount').value).includes(norm(currentJournal.credit))&&Number($('debitAmount').value)===currentJournal.amt&&Number($('creditAmount').value)===currentJournal.amt;score(ok);$('journalFeedback').innerHTML=ok?`<div class='feedback good'>Correct journal entry.</div>`:`<div class='feedback bad'>Answer: Dr ${currentJournal.debit} ${money(currentJournal.amt)}, Cr ${currentJournal.credit} ${money(currentJournal.amt)}.</div>`}
+function newRatioQuestion(){let sales=rand(90,250)*1000,cogs=rand(35,100)*1000,np=rand(8,45)*1000,ca=rand(30,120)*1000,cl=rand(15,80)*1000,tl=rand(40,160)*1000,eq=rand(50,200)*1000,ta=tl+eq;let qs=[['Current ratio',`Current assets are ${money(ca)} and current liabilities are ${money(cl)}. Calculate current ratio.`,ca/cl],['Debt to equity',`Total liabilities are ${money(tl)} and equity is ${money(eq)}. Calculate debt to equity.`,tl/eq],['Gross profit margin',`Sales are ${money(sales)} and COGS is ${money(cogs)}. Calculate gross profit margin as a decimal.`,(sales-cogs)/sales],['Net profit margin',`Net profit is ${money(np)} and sales are ${money(sales)}. Calculate net profit margin as a decimal.`,np/sales],['ROA',`Net profit is ${money(np)} and total assets are ${money(ta)}. Calculate ROA as a decimal.`,np/ta]];let q=qs[rand(0,qs.length-1)];currentRatio={name:q[0],q:q[1],ans:Number(q[2].toFixed(2))};$('ratioQuestion').textContent=q[1];$('ratioAnswer').value='';$('ratioFeedback').innerHTML=''}
+function checkRatio(){let ans=Number($('ratioAnswer').value),ok=Math.abs(ans-currentRatio.ans)<=0.01;score(ok);$('ratioFeedback').innerHTML=ok?`<div class='feedback good'>Correct.</div>`:`<div class='feedback bad'>Not quite. ${currentRatio.name} = ${currentRatio.ans} rounded to 2 decimals.</div>`}
+const advanced=[{q:'In consolidation, what does BCVR usually adjust?',c:['Book values to fair values at acquisition','Cash receipts only','Revenue recognition only','GST payable'],a:0,e:'BCVR adjusts subsidiary identifiable assets/liabilities from carrying amount to fair value at acquisition.'},{q:'Goodwill on acquisition is calculated using consideration plus NCI plus previously held interest less what?',c:['Fair value of identifiable net assets acquired','Cash sales','Opening inventory only','Loan repayments'],a:0,e:'Goodwill compares what is paid/recognised against identifiable net assets acquired.'},{q:'Under equity accounting, the investor recognises its share of what?',c:['Associate profit or loss','All associate revenue line by line','Only cash dividends as revenue','All liabilities as its own'],a:0,e:'Equity accounting adjusts the investment for share of profit/loss and dividends.'},{q:'A derivative asset is recognised when the derivative has a...',c:['Positive fair value','Zero balance always','Negative fair value','Cash-only value'],a:0,e:'Positive fair value is an asset; negative fair value is a liability.'},{q:'Foreign currency monetary items at reporting date are retranslated using...',c:['Closing rate','Historical rate only','Average rate always','No exchange rate'],a:0,e:'Monetary items are generally retranslated at the closing rate.'}];
+function newAdvancedQuestion(){currentAdvanced=advanced[rand(0,advanced.length-1)];$('advancedQuestion').textContent=currentAdvanced.q;$('advancedChoices').innerHTML=currentAdvanced.c.map((x,i)=>`<div class='choice' onclick='checkAdvanced(${i})'>${x}</div>`).join('');$('advancedFeedback').innerHTML=''}function checkAdvanced(i){let ok=i===currentAdvanced.a;score(ok);$('advancedFeedback').innerHTML=ok?`<div class='feedback good'>Correct. ${currentAdvanced.e}</div>`:`<div class='feedback bad'>Not quite. ${currentAdvanced.e}</div>`}
+function startExam(){showSection('exam');exam=[];for(let i=0;i<20;i++){let type=['ratio','journal','advanced'][rand(0,2)];exam.push(type)}$('examBox').innerHTML=`<h3>Exam started</h3><p>Use the practice modules to answer mixed questions. For this website version, exam mode tracks your target: complete 20 questions across any modules, then compare your dashboard score.</p><p><b>Target:</b> 20 questions. Current attempted: ${state.attempted}</p><button class='btn' onclick='showSection("statements");newStatementQuestion()'>Go to questions</button>`}
+updateMetrics();newStatementQuestion();newJournalQuestion();newRatioQuestion();newAdvancedQuestion();
 </script>
 </body>
 </html>
